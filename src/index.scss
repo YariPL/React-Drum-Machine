@@ -5,37 +5,60 @@
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 	box-sizing: border-box;         /* Opera/IE 8+ */
 }
-#drum-machine {
-	position: fixed;
-	left: 50%;
-	top:50%;
-	transform: translate(-50%,-50%);
-	width: 80%;
-	border: 10px solid red;
-	border-radius: 10px;
+.App{
 	display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 
-	#padsPanel {
-		width: 50%;
-		background: green;
+	#drum-machine {
+		width: 80%;
+		border: 10px solid red;
+		border-radius: 10px;
 		display: flex;
-	    flex-wrap: wrap;
-		.drum-pad {
-			background: gray;
-			width: 25%;
-			margin: 10px;
-			padding-top: 25%;
-			position: relative;
-			cursor: pointer;
-			box-sizing: border-box;
-			border-radius: 5%;
+
+		#padsPanel {
+			width: 50%;
+			background: green;
+			display: flex;
+		    flex-wrap: wrap;
+			.drum-pad {
+				background: gray;
+				width: 25%;
+				margin: 10px;
+				padding-top: 25%;
+				position: relative;
+				cursor: pointer;
+				box-sizing: border-box;
+				border-radius: 5%;
+				span {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%,-50%);
+				}
+			}
 		}
-	}
-	#display {
-		width: 50%;
-		background: blue;
-	}
-	
+		#display {
+			width: 50%;
+			background: blue;
+			display: flex;
+			flex-direction:column;
+			div {
+				height: 33.3%;
+			}
+			.powerButton{
+				background: burlywood;
+			}
+			.displayCurrent{
+				background: blue;
+			}
+			.volume {
+				background: brown;
+			}
+		}
+		
 
 
+	}
 }

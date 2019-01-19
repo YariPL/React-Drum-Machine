@@ -38,7 +38,15 @@ class Controls extends React.Component {
 	render() {
 		return(
 			<div id="display">
-				fawfwa
+				<div className="powerButton">
+					1afdafaw
+				</div>
+				<div className="displayCurrent">
+					2afdafaw
+				</div>
+				<div className="volume">
+					3afdafaw
+				</div>
 			</div>
 		)
 	}
