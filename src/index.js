@@ -5,12 +5,12 @@ import * as serviceWorker from './serviceWorker';
 
 
 class App extends React.Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			padsData: [
 				{
-					id:1,
+					id:0,
 					className:'drum-pad',
 					song:'https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3',
 					innerText:'Q'
@@ -22,55 +22,60 @@ class App extends React.Component {
 					innerText:'W'
 				},
 				{
-					id:1,
+					id:2,
 					className:'drum-pad',
 					song:'https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3',
 					innerText:'E'
 				},
 				{
-					id:1,
+					id:3,
 					className:'drum-pad',
 					song:'https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3',
 					innerText:'A'
 				},
 				{
-					id:1,
+					id:4,
 					className:'drum-pad',
 					song:'https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3',
 					innerText:'S'
 				},
 				{
-					id:1,
+					id:5,
 					className:'drum-pad',
-					song:'https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp',
+					song:'https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3',
 					innerText:'D'
 				},
 				{
-					id:1,
+					id:6,
 					className:'drum-pad',
 					song:'https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3',
 					innerText:'Z'
 				},
 				{
-					id:1,
+					id:7,
 					className:'drum-pad',
 					song:'https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3',
 					innerText:'X'
 				},
 				{
-					id:1,
+					id:8,
 					className:'drum-pad',
 					song:'https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3',
 					innerText:'C'
 				},
 			]
 		}
+		this.updateState = this.updateState.bind(this);
+
+	}
+	updateState () {
+		console.log('smth');
 	}
   render() {
     return (
       <div className="App">
       	<div id="drum-machine">
-      		<Panel />
+      		<Panel padsData={this.state.padsData} updateState={this.updateState}/>
       		<Controls />
       	</div>
       </div>
@@ -78,29 +83,43 @@ class App extends React.Component {
   }
 }
 class Panel extends React.Component {
+	constructor() {
+		super();
+		this.clickPad = this.clickPad.bind(this);
+	}
+			
+
+	clickPad(e) {
+		console.log('clickPad')
+		e.target.querySelector('audio').play();
+		console.log(e.target.querySelector('audio'))
+		//this.props.updateState();
+	}
 	render() {
 		return(	
 			<div id="padsPanel">
-				<div class="drum-pad"><span>Q</span></div>
-				<div class="drum-pad"><span>W</span></div>
-				<div class="drum-pad"><span>E</span></div>
-				<div class="drum-pad"><span>A</span></div>
-				<div class="drum-pad"><span>S</span></div>
-				<div class="drum-pad"><span>D</span></div>
-				<div class="drum-pad"><span>Z</span></div>
-				<div class="drum-pad"><span>X</span></div>
-				<div class="drum-pad"><span>C</span></div>
+				{this.props.padsData.map((pad) => {return <div onClick={this.clickPad} key={pad.id} className={pad.className}> <span><audio id={pad.id} src={pad.song} />{pad.innerText}</span></div>})}
 			</div>
 		)
 	}
 }
 
 class Controls extends React.Component {
+	constructor(){
+		super();
+
+	}
+	onOff(){
+		
+	}
 	render() {
 		return(
 			<div id="display">
 				<div className="powerButton">
-					1afdafaw
+					<label className="switch" onClick={this.onOff}>
+					  <input type="checkbox" defaultChecked />
+					  <span className="slider round"></span>
+					</label>
 				</div>
 				<div className="displayCurrent">
 					2afdafaw
