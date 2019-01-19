@@ -20,7 +20,15 @@ class Panel extends React.Component {
 	render() {
 		return(	
 			<div id="padsPanel">
-				wew
+				<div class="drum-pad"><span>Q</span></div>
+				<div class="drum-pad"><span>W</span></div>
+				<div class="drum-pad"><span>E</span></div>
+				<div class="drum-pad"><span>A</span></div>
+				<div class="drum-pad"><span>S</span></div>
+				<div class="drum-pad"><span>D</span></div>
+				<div class="drum-pad"><span>Z</span></div>
+				<div class="drum-pad"><span>X</span></div>
+				<div class="drum-pad"><span>C</span></div>
 			</div>
 		)
 	}
