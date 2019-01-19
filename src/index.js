@@ -20,7 +20,7 @@ class Panel extends React.Component {
 	render() {
 		return(	
 			<div id="padsPanel">
-
+				wew
 			</div>
 		)
 	}
