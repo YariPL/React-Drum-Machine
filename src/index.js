@@ -13,56 +13,65 @@ class App extends React.Component {
 					id:0,
 					className:'drum-pad',
 					song:'https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3',
-					innerText:'Q'
+					innerText:'Q',
+					charCode:113
 				},
 				{
 					id:1,
 					className:'drum-pad',
 					song:'https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3',
-					innerText:'W'
+					innerText:'W',
+					charCode:119
 				},
 				{
 					id:2,
 					className:'drum-pad',
 					song:'https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3',
-					innerText:'E'
+					innerText:'E',
+					charCode:101
 				},
 				{
 					id:3,
 					className:'drum-pad',
 					song:'https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3',
-					innerText:'A'
+					innerText:'A',
+					charCode:97
 				},
 				{
 					id:4,
 					className:'drum-pad',
 					song:'https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3',
-					innerText:'S'
+					innerText:'S',
+					charCode:115
 				},
 				{
 					id:5,
 					className:'drum-pad',
 					song:'https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3',
-					innerText:'D'
+					innerText:'D',
+					charCode:100
 				},
 				{
 					id:6,
 					className:'drum-pad',
 					song:'https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3',
-					innerText:'Z'
+					innerText:'Z',
+					charCode:122
 				},
 				{
 					id:7,
 					className:'drum-pad',
 					song:'https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3',
-					innerText:'X'
+					innerText:'X',
+					charCode:120
 				},
 				{
 					id:8,
 					className:'drum-pad',
 					song:'https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3',
-					innerText:'C'
-				},
+					innerText:'C',
+					charCode:99
+				}
 			]
 		}
 		this.updateState = this.updateState.bind(this);
@@ -71,6 +80,8 @@ class App extends React.Component {
 	updateState () {
 		console.log('smth');
 	}
+
+	
   render() {
     return (
       <div className="App">
@@ -87,18 +98,22 @@ class Panel extends React.Component {
 		super();
 		this.clickPad = this.clickPad.bind(this);
 	}
-			
+	//need to catch the keydown event
+	componentWillMount(){
+		document.addEventListener("keypress", this.clickPad.bind(this));
+	}		
 
 	clickPad(e) {
-		console.log('clickPad')
-		e.target.querySelector('audio').play();
-		console.log(e.target.querySelector('audio'))
+		console.log('clickPad || touchPad');
+		this.props.padsData.map((pad) => console.log(document.querySelector('audio[attr ="tabIndex"][{e.charCode}]'));
+		//e.target.querySelector('audio').play();(
+		//console.log(e.charCode);
 		//this.props.updateState();
 	}
 	render() {
 		return(	
 			<div id="padsPanel">
-				{this.props.padsData.map((pad) => {return <div onClick={this.clickPad} key={pad.id} className={pad.className}> <span><audio id={pad.id} src={pad.song} />{pad.innerText}</span></div>})}
+				{this.props.padsData.map((pad) => {return <div onClick={this.clickPad} onKeyPress={() => this.clickPad} key={pad.id} className={pad.className}> <span><audio tabIndex={pad.charCode} id={pad.id} src={pad.song} />{pad.innerText}</span></div>})}
 			</div>
 		)
 	}
@@ -107,10 +122,11 @@ class Panel extends React.Component {
 class Controls extends React.Component {
 	constructor(){
 		super();
+		this.onOff = this.onOff.bind(this);
 
 	}
 	onOff(){
-		
+
 	}
 	render() {
 		return(
