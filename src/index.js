@@ -135,12 +135,14 @@ class Controls extends React.Component {
 	constructor(){
 		super();
 		this.onOff = this.onOff.bind(this);
-		
+
 	}
 	onOff(e){
 		if(e.target.tagName === "INPUT") {} else {this.props.updatestate(this.props.active);}
 	}
+	
 	render() {
+
 		return(
 			<div id="display">
 				<div className="powerButton">
@@ -150,10 +152,9 @@ class Controls extends React.Component {
 					</label>
 				</div>
 				<div className="displayCurrent">
-					<input id="vol-control" type="range" min="0" max="100" step="1" onInput="SetVolume(this.value)" oNchange="SetVolume(this.value)"></input>
 				</div>
 				<div className="volume">
-					3afdafaw
+				<input id="vol-control" type="range" min="0" max="100" step="1" input="50" />
 				</div>
 			</div>
 		)

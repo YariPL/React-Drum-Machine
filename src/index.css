@@ -94,6 +94,7 @@
       .App #drum-machine #display .displayCurrent {
         background: blue; }
       .App #drum-machine #display .volume {
-        background: brown; }
+        background: brown;
+        position: relative; }
 
 /*# sourceMappingURL=index.css.map */
