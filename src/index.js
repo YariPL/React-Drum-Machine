@@ -105,7 +105,17 @@ class Panel extends React.Component {
 
 	clickPad(e) {
 		console.log('clickPad || touchPad');
-		this.props.padsData.map((pad) => console.log(document.querySelector('audio[attr ="tabIndex"][{e.charCode}]'));
+		console.log(e.charCode);
+		console.log(';afaf');
+		if(this.props.padsData.map((pad) => (pad.charCode === e.charCode ? console.log(pad.charCode) : false ) )){
+
+			console.log('play1')
+			//document.querySelector(`audio[tabIndex="${e.charCode}"]`).play();
+		} else {
+			console.log('play2')
+			//e.target.querySelector('audio').play();
+		}
+		//console.log(e.charCode)
 		//e.target.querySelector('audio').play();(
 		//console.log(e.charCode);
 		//this.props.updateState();
