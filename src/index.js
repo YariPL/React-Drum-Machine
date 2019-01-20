@@ -78,7 +78,7 @@ class App extends React.Component {
 		this.updateState = this.updateState.bind(this);
 
 	}
-	updateState (active) {
+	updateState () {
 		this.setState({
 			//active:activeS
 		});
@@ -106,13 +106,20 @@ class Panel extends React.Component {
 	}		
 
 	clickPad(e) {
-		if(this.props.active){
+		//if(this.props.active){
 			//checking if button which is clicked is one from the list of 9 in data
-			if(this.props.padsData.map((pad) => pad.charCode === e.charCode ? document.querySelector(`audio[tabIndex="${e.charCode}"]`).play() : false));
+			if(e.charCode){
+				console.log('e.charCode')
+				if(this.props.padsData.map((pad) => pad.charCode === e.charCode ? document.querySelector(`audio[tabIndex="${e.charCode}"]`).play() : false));
+			}else if (e.target){
+				console.log('e.target')
+				e.target.querySelector('audio').play();
+			}
 			//checking if click one of buttons
-			e.target.querySelector('audio').play();
+			//e.target.querySelector('audio').play();
 			//this.props.updateState();
-		}
+			console.log('-----------------------')
+		//}
 	}
 	render() {
 		return(	
@@ -138,14 +145,14 @@ class Controls extends React.Component {
 	}
 	onOff(){
 		console.log('%c fwafawf','font-size:44px;')
-		debugger;
+
 		this.props.updatestate(this.props.active);
 	}
 	render() {
 		return(
 			<div id="display">
 				<div className="powerButton">
-					<label className="switch" onClick={() => this.onOff()}>
+					<label className="switch" onClick={this.onOff}>
 					  <input type="checkbox" defaultChecked />
 					  <span className="slider round"></span>
 					</label>
