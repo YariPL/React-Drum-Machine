@@ -73,9 +73,11 @@ class App extends React.Component {
 					charCode:99
 				}
 			],
-			active:true
+			active:true,
+			volumeValue:50
 		}
 		this.updateState = this.updateState.bind(this);
+		this.updateVolume = this.updateVolume.bind(this);
 
 	}
 	updateState (active) {
@@ -84,12 +86,19 @@ class App extends React.Component {
 		});
 		console.log(this.state.active)
 	}
+	updateVolume(volumeValue) {
+		console.log(volumeValue);
+		this.setState({
+			volumeValue:volumeValue
+		})
+		console.log(this.state.volumeValue)
+	}
   render() {
     return (
       <div className="App">
       	<div id="drum-machine">
       		<Panel padsData={this.state.padsData} active={this.state.active}/>
-      		<Controls active={this.state.active} updatestate={this.updateState}/>
+      		<Controls active={this.state.active} updatestate={this.updateState} volumeValue={this.state.volumeValue} updateVolume={this.updateVolume} />
       	</div>
       </div>
     );
@@ -135,12 +144,15 @@ class Controls extends React.Component {
 	constructor(){
 		super();
 		this.onOff = this.onOff.bind(this);
+		this.changeVolumeLevel = this.changeVolumeLevel.bind(this);
 
 	}
 	onOff(e){
 		if(e.target.tagName === "INPUT") {} else {this.props.updatestate(this.props.active);}
 	}
-	
+	changeVolumeLevel(volumeLevel) {
+		this.props.updateVolume(volumeLevel.target.value)
+	}
 	render() {
 
 		return(
@@ -154,7 +166,7 @@ class Controls extends React.Component {
 				<div className="displayCurrent">
 				</div>
 				<div className="volume">
-				<input id="vol-control" type="range" min="0" max="100" step="1" input="50" />
+				<input id="vol-control" type="range" min="0" max="100" step="1" defaultValue={this.props.volumeValue} onChange={this.changeVolumeLevel} />
 				</div>
 			</div>
 		)
