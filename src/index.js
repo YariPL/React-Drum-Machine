@@ -77,7 +77,6 @@ class App extends React.Component {
 			volumeValue:50
 		}
 		this.updateState = this.updateState.bind(this);
-		this.updateVolume = this.updateVolume.bind(this);
 
 	}
 	updateState (active) {
@@ -86,14 +85,7 @@ class App extends React.Component {
 		});
 		console.log(this.state.active)
 	}
-	updateVolume(volumeValue) {
-		console.log(volumeValue);
-		this.setState({
-			volumeValue:volumeValue
-		})
-
-
-	}
+	
   render() {
     return (
       <div className="App">
@@ -154,7 +146,6 @@ class Controls extends React.Component {
 	changeVolumeLevel(volumeLevel) {
 		let vid = document.querySelectorAll("audio");
 		for(let i=0;i<vid.length; i++) {
-			console.log('fwaf');
 			vid[i].volume = volumeLevel.target.value/100;
 		}
 	}
