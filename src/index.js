@@ -91,6 +91,10 @@ class App extends React.Component {
 		this.setState({
 			volumeValue:volumeValue
 		})
+		//window.volume = volumeValue;
+
+		let vid = document.querySelector("audio");
+vid.volume = volumeValue;
 		console.log(this.state.volumeValue)
 	}
   render() {
