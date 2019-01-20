@@ -83,6 +83,11 @@ class App extends React.Component {
 		this.setState({
 			active:!active
 		});
+		if(this.state.active){
+			document.querySelector('#drum-machine').style.opacity = 0.5;
+		} else {
+			document.querySelector('#drum-machine').style.opacity = 1;
+		}
 		console.log(this.state.active)
 	}
 	
