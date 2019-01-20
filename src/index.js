@@ -91,18 +91,15 @@ class App extends React.Component {
 		this.setState({
 			volumeValue:volumeValue
 		})
-		//window.volume = volumeValue;
 
-		let vid = document.querySelector("audio");
-vid.volume = volumeValue;
-		console.log(this.state.volumeValue)
+
 	}
   render() {
     return (
       <div className="App">
       	<div id="drum-machine">
       		<Panel padsData={this.state.padsData} active={this.state.active}/>
-      		<Controls active={this.state.active} updatestate={this.updateState} volumeValue={this.state.volumeValue} updateVolume={this.updateVolume} />
+      		<Controls active={this.state.active} updatestate={this.updateState} />
       	</div>
       </div>
     );
@@ -155,7 +152,11 @@ class Controls extends React.Component {
 		if(e.target.tagName === "INPUT") {} else {this.props.updatestate(this.props.active);}
 	}
 	changeVolumeLevel(volumeLevel) {
-		this.props.updateVolume(volumeLevel.target.value)
+		let vid = document.querySelectorAll("audio");
+		for(let i=0;i<vid.length; i++) {
+			console.log('fwaf');
+			vid[i].volume = volumeLevel.target.value/100;
+		}
 	}
 	render() {
 
