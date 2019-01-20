@@ -46,12 +46,17 @@
         height: 33.3%; }
       .App #drum-machine #display .powerButton {
         background: burlywood;
+        position: relative;
         /* Rounded sliders */ }
         .App #drum-machine #display .powerButton .switch {
           position: relative;
           display: inline-block;
           width: 60px;
-          height: 34px; }
+          height: 34px;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%); }
         .App #drum-machine #display .powerButton .switch input {
           opacity: 0;
           width: 0;

@@ -72,22 +72,24 @@ class App extends React.Component {
 					innerText:'C',
 					charCode:99
 				}
-			]
+			],
+			active:true
 		}
 		this.updateState = this.updateState.bind(this);
 
 	}
-	updateState () {
-		console.log('smth');
+	updateState (active) {
+		this.setState({
+			//active:activeS
+		});
+		console.log(this.state.active)
 	}
-
-	
   render() {
     return (
       <div className="App">
       	<div id="drum-machine">
-      		<Panel padsData={this.state.padsData} updateState={this.updateState}/>
-      		<Controls />
+      		<Panel padsData={this.state.padsData} active={this.state.active}/>
+      		<Controls active={this.state.active} updatestate={this.updateState}/>
       	</div>
       </div>
     );
@@ -104,26 +106,25 @@ class Panel extends React.Component {
 	}		
 
 	clickPad(e) {
-		console.log('clickPad || touchPad');
-		console.log(e.charCode);
-		console.log(';afaf');
-		if(this.props.padsData.map((pad) => pad.charCode === e.charCode ? document.querySelector(`audio[tabIndex="${e.charCode}"]`).play() : false)){
-
-			console.log('play1');
-			//document.querySelector(`audio[tabIndex="${e.charCode}"]`).play();
-		} else {
-			console.log('play2');
-			//e.target.querySelector('audio').play();
+		if(this.props.active){
+			//checking if button which is clicked is one from the list of 9 in data
+			if(this.props.padsData.map((pad) => pad.charCode === e.charCode ? document.querySelector(`audio[tabIndex="${e.charCode}"]`).play() : false));
+			//checking if click one of buttons
+			e.target.querySelector('audio').play();
+			//this.props.updateState();
 		}
-		//console.log(e.charCode)
-		//e.target.querySelector('audio').play();(
-		//console.log(e.charCode);
-		//this.props.updateState();
 	}
 	render() {
 		return(	
 			<div id="padsPanel">
-				{this.props.padsData.map((pad) => {return <div onClick={this.clickPad} onKeyPress={() => this.clickPad} key={pad.id} className={pad.className}> <span><audio tabIndex={pad.charCode} id={pad.id} src={pad.song} />{pad.innerText}</span></div>})}
+				{this.props.padsData.map((pad) => {
+					return <div onClick={this.clickPad} onKeyPress={
+						() => this.clickPad} key={pad.id} className={pad.className}>
+						<span>
+							<audio tabIndex={pad.charCode} id={pad.id} src={pad.song} />
+							{pad.innerText}
+						</span>
+					</div>})}
 			</div>
 		)
 	}
@@ -133,16 +134,18 @@ class Controls extends React.Component {
 	constructor(){
 		super();
 		this.onOff = this.onOff.bind(this);
-
+		
 	}
 	onOff(){
-
+		console.log('%c fwafawf','font-size:44px;')
+		debugger;
+		this.props.updatestate(this.props.active);
 	}
 	render() {
 		return(
 			<div id="display">
 				<div className="powerButton">
-					<label className="switch" onClick={this.onOff}>
+					<label className="switch" onClick={() => this.onOff()}>
 					  <input type="checkbox" defaultChecked />
 					  <span className="slider round"></span>
 					</label>
