@@ -113,6 +113,8 @@ class Panel extends React.Component {
 	}		
 
 	clickPad(e) {
+					console.log(e);
+
 		if(this.props.active){
 			if(e.charCode){
 				//checking if button which is clicked is one from the list of 9 in data
@@ -127,9 +129,9 @@ class Panel extends React.Component {
 			<div id="padsPanel">
 				{this.props.padsData.map((pad) => {
 					return <div onClick={this.clickPad} onKeyPress={
-						() => this.clickPad} key={pad.id} className={pad.className}>
+						() => this.clickPad} key={pad.song} id={pad.id} className={pad.className}>
 						<span>
-							<audio tabIndex={pad.charCode} id={pad.id} src={pad.song} />
+							<audio tabIndex={pad.charCode} id={pad.innerText} className="clip" src={pad.song} />
 							{pad.innerText}
 						</span>
 					</div>})}
