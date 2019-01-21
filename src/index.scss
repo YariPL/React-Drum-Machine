@@ -39,7 +39,7 @@
 				}
 			}
 		}
-		#display {
+		#displayBlock {
 			width: 50%;
 			background: blue;
 			display: flex;
@@ -93,8 +93,6 @@
 				input:checked + .slider {
 				  background-color: #2196F3;
 				}
-
-
 
 				input:checked + .slider:before {
 				  -webkit-transform: translateX(26px);

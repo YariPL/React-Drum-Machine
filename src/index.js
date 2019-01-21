@@ -14,63 +14,63 @@ class App extends React.Component {
 					className:'drum-pad',
 					song:'https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3',
 					innerText:'Q',
-					charCode:113
+					charCode:81
 				},
 				{
 					id:1,
 					className:'drum-pad',
 					song:'https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3',
 					innerText:'W',
-					charCode:119
+					charCode:87
 				},
 				{
 					id:2,
 					className:'drum-pad',
 					song:'https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3',
 					innerText:'E',
-					charCode:101
+					charCode:69
 				},
 				{
 					id:3,
 					className:'drum-pad',
 					song:'https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3',
 					innerText:'A',
-					charCode:97
+					charCode:65
 				},
 				{
 					id:4,
 					className:'drum-pad',
 					song:'https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3',
 					innerText:'S',
-					charCode:115
+					charCode:83
 				},
 				{
 					id:5,
 					className:'drum-pad',
 					song:'https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3',
 					innerText:'D',
-					charCode:100
+					charCode:68
 				},
 				{
 					id:6,
 					className:'drum-pad',
 					song:'https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3',
 					innerText:'Z',
-					charCode:122
+					charCode:90
 				},
 				{
 					id:7,
 					className:'drum-pad',
 					song:'https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3',
 					innerText:'X',
-					charCode:120
+					charCode:88
 				},
 				{
 					id:8,
 					className:'drum-pad',
 					song:'https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3',
 					innerText:'C',
-					charCode:99
+					charCode:67
 				}
 			],
 			active:true,
@@ -113,8 +113,6 @@ class Panel extends React.Component {
 	}		
 
 	clickPad(e) {
-					console.log(e);
-
 		if(this.props.active){
 			if(e.charCode){
 				//checking if button which is clicked is one from the list of 9 in data
@@ -159,14 +157,14 @@ class Controls extends React.Component {
 	render() {
 
 		return(
-			<div id="display">
+			<div id="displayBlock">
 				<div className="powerButton">
 					<label className="switch" htmlFor='checkPower' onClick={this.onOff}>
 					  <input type="checkbox" id='checkPower' defaultChecked />
 					  <span className="slider round"></span>
 					</label>
 				</div>
-				<div className="displayCurrent">
+				<div className="displayCurrent" id="display">
 				</div>
 				<div className="volume">
 				<input id="vol-control" type="range" min="0" max="100" step="1" defaultValue={this.props.volumeValue} onChange={this.changeVolumeLevel} />

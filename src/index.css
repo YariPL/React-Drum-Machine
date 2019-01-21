@@ -37,18 +37,18 @@
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%); }
-    .App #drum-machine #display {
+    .App #drum-machine #displayBlock {
       width: 50%;
       background: blue;
       display: flex;
       flex-direction: column; }
-      .App #drum-machine #display div {
+      .App #drum-machine #displayBlock div {
         height: 33.3%; }
-      .App #drum-machine #display .powerButton {
+      .App #drum-machine #displayBlock .powerButton {
         background: burlywood;
         position: relative;
         /* Rounded sliders */ }
-        .App #drum-machine #display .powerButton .switch {
+        .App #drum-machine #displayBlock .powerButton .switch {
           position: relative;
           display: inline-block;
           width: 60px;
@@ -57,11 +57,11 @@
           left: 50%;
           top: 50%;
           transform: translate(-50%, -50%); }
-        .App #drum-machine #display .powerButton .switch input {
+        .App #drum-machine #displayBlock .powerButton .switch input {
           opacity: 0;
           width: 0;
           height: 0; }
-        .App #drum-machine #display .powerButton .slider {
+        .App #drum-machine #displayBlock .powerButton .slider {
           position: absolute;
           cursor: pointer;
           top: 0;
@@ -71,7 +71,7 @@
           background-color: #ccc;
           -webkit-transition: .4s;
           transition: .4s; }
-        .App #drum-machine #display .powerButton .slider:before {
+        .App #drum-machine #displayBlock .powerButton .slider:before {
           position: absolute;
           content: "";
           height: 26px;
@@ -81,22 +81,22 @@
           background-color: white;
           -webkit-transition: .4s;
           transition: .4s; }
-        .App #drum-machine #display .powerButton input:checked + .slider {
+        .App #drum-machine #displayBlock .powerButton input:checked + .slider {
           background-color: #2196F3; }
-        .App #drum-machine #display .powerButton input:checked + .slider:before {
+        .App #drum-machine #displayBlock .powerButton input:checked + .slider:before {
           -webkit-transform: translateX(26px);
           -ms-transform: translateX(26px);
           transform: translateX(26px); }
-        .App #drum-machine #display .powerButton .slider.round {
+        .App #drum-machine #displayBlock .powerButton .slider.round {
           border-radius: 34px; }
-        .App #drum-machine #display .powerButton .slider.round:before {
+        .App #drum-machine #displayBlock .powerButton .slider.round:before {
           border-radius: 50%; }
-      .App #drum-machine #display .displayCurrent {
+      .App #drum-machine #displayBlock .displayCurrent {
         background: blue; }
-      .App #drum-machine #display .volume {
+      .App #drum-machine #displayBlock .volume {
         background: brown;
         position: relative; }
-        .App #drum-machine #display .volume input {
+        .App #drum-machine #displayBlock .volume input {
           position: absolute;
           top: 50%;
           left: 50%;
