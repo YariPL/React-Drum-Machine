@@ -74,7 +74,8 @@ class App extends React.Component {
 				}
 			],
 			active:true,
-			volumeValue:50
+			volumeValue:50,
+			currentTabNameVal:null
 		}
 		this.updateState = this.updateState.bind(this);
 		this.displayTabName = this.displayTabName.bind(this);
@@ -93,7 +94,10 @@ class App extends React.Component {
 	}
 	displayTabName(e) {
 		console.log('ss');
-		console.log(e.className);
+		console.log(e.innerText);
+		this.setState({
+			currentTabNameVal:e.innerText
+		})
 	}
 	
   render() {
@@ -101,7 +105,7 @@ class App extends React.Component {
       <div className="App">
       	<div id="drum-machine">
       		<Panel padsData={this.state.padsData} active={this.state.active} currentTabName={this.displayTabName}/>
-      		<Controls active={this.state.active} updatestate={this.updateState} currentTabName={this.displayTabName} />
+      		<Controls active={this.state.active} updatestate={this.updateState} currentTabName={this.state.currentTabNameVal} />
       	</div>
       </div>
     );
@@ -171,6 +175,7 @@ class Controls extends React.Component {
 					</label>
 				</div>
 				<div className="displayCurrent" id="display">
+					<div>{this.props.currentTabName}</div>
 				</div>
 				<div className="volume">
 				<input id="vol-control" type="range" min="0" max="100" step="1" defaultValue={this.props.volumeValue} onChange={this.changeVolumeLevel} />
