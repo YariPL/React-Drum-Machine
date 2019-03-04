@@ -77,6 +77,7 @@ class App extends React.Component {
 			volumeValue:50
 		}
 		this.updateState = this.updateState.bind(this);
+		this.displayTabName = this.displayTabName.bind(this);
 
 	}
 	updateState (active) {
@@ -90,13 +91,17 @@ class App extends React.Component {
 		}
 		console.log(this.state.active)
 	}
+	displayTabName(e) {
+		console.log('ss');
+		console.log(e);
+	}
 	
   render() {
     return (
       <div className="App">
       	<div id="drum-machine">
-      		<Panel padsData={this.state.padsData} active={this.state.active}/>
-      		<Controls active={this.state.active} updatestate={this.updateState} />
+      		<Panel padsData={this.state.padsData} active={this.state.active} currentTabName={this.displayTabName}/>
+      		<Controls active={this.state.active} updatestate={this.updateState} currentTabName={this.displayTabName} />
       	</div>
       </div>
     );
@@ -113,6 +118,7 @@ class Panel extends React.Component {
 	}		
 
 	clickPad(e) {
+		this.props.currentTabName(e);
 		if(this.props.active){
 			if(e.charCode){
 				//checking if button which is clicked is one from the list of 9 in data
