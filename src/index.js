@@ -93,7 +93,7 @@ class App extends React.Component {
 	}
 	displayTabName(e) {
 		console.log('ss');
-		console.log(e);
+		console.log(e.className);
 	}
 	
   render() {
@@ -118,7 +118,7 @@ class Panel extends React.Component {
 	}		
 
 	clickPad(e) {
-		this.props.currentTabName(e);
+		this.props.currentTabName(e.target);
 		if(this.props.active){
 			if(e.charCode){
 				//checking if button which is clicked is one from the list of 9 in data
