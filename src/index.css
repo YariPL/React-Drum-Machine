@@ -92,7 +92,15 @@
         .App #drum-machine #displayBlock .powerButton .slider.round:before {
           border-radius: 50%; }
       .App #drum-machine #displayBlock .displayCurrent {
-        background: blue; }
+        background: blue;
+        position: relative; }
+        .App #drum-machine #displayBlock .displayCurrent div {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: white;
+          height: auto; }
       .App #drum-machine #displayBlock .volume {
         background: brown;
         position: relative; }
